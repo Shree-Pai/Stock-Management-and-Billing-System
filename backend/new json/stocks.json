@@ -1,0 +1,45 @@
+[
+    {
+      "itemName": "Laptop",
+      "itemNo": 101,
+      "itemStock": 10,
+      "itemPrice": 800,
+      "finished": false
+    },
+    {
+      "itemName": "Mouse",
+      "itemNo": 102,
+      "itemStock": 50,
+      "itemPrice": 20,
+      "finished": false
+    },
+    {
+      "itemName": "Monitor",
+      "itemNo": 103,
+      "itemStock": 15,
+      "itemPrice": 200,
+      "finished": false
+    },
+    {
+      "itemName": "Keyboard",
+      "itemNo": 104,
+      "itemStock": 30,
+      "itemPrice": 50,
+      "finished": false
+    },
+    {
+      "itemName": "Printer",
+      "itemNo": 105,
+      "itemStock": 5,
+      "itemPrice": 150,
+      "finished": false
+    },
+    {
+      "itemName": "USB Cable",
+      "itemNo": 106,
+      "itemStock": 100,
+      "itemPrice": 10,
+      "finished": false
+    }
+  ]
+  

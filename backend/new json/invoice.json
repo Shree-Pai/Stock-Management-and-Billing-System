@@ -1,0 +1,21 @@
+[
+    {
+      "invoiceNo": 1001,
+      "custName": "John Doe",
+      "itemPurchased": ["Laptop", "Mouse"],
+      "totalPurchasedPrice": 1200
+    },
+    {
+      "invoiceNo": 1002,
+      "custName": "Jane Smith",
+      "itemPurchased": ["Monitor", "Keyboard"],
+      "totalPurchasedPrice": 450
+    },
+    {
+      "invoiceNo": 1003,
+      "custName": "Alice Johnson",
+      "itemPurchased": ["Printer", "USB Cable"],
+      "totalPurchasedPrice": 250
+    }
+  ]
+  

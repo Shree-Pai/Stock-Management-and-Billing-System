@@ -31,7 +31,7 @@ export default function InvoiceState(props) {
                 'content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "custName": "Arjav",
+                "custName": "shree",
                 "itemPurchased": totalItemsToBuyP,
                 "totalPurchasedPrice": totalPrice
             })

@@ -5,23 +5,24 @@ import './App.css';
 import ItemState from './context/itemState';
 import InvoiceState from './context/invoiceState';
 import BillingMain from './components/billingMain';
+import AddItemState from './context/addItemState';
 
 function App() {
   return (
-    <div className="App">
-      <ItemState>
-        <InvoiceState>
+    <ItemState>
+      <InvoiceState>
+        <AddItemState>
           <Router>
-            {/* <Navbar /> */}
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
-                <Route exact path="/" element={<BillingMain />} />
+                <Route path="/" element={<BillingMain />} />
+                {/* Add more routes here if needed */}
               </Routes>
             </Suspense>
           </Router>
-        </InvoiceState>
-      </ItemState>
-    </div>
+        </AddItemState>
+      </InvoiceState>
+    </ItemState>
   );
 }
 

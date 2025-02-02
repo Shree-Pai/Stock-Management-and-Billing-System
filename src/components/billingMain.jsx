@@ -5,6 +5,7 @@ import ReactToPrint from 'react-to-print';
 import BillingItems from './billingItems';
 import InvoiceContext from '../context/invoiceContext';
 import InvoiceComponent from './invoiceComponent';
+import AddItem from './addItems';  // Updated import name to match component name
 
 export default function BillingMain() {
   const itemContext = useContext(ItemContext);
@@ -12,20 +13,11 @@ export default function BillingMain() {
   const invoiceContext = useContext(InvoiceContext);
   const { getInvoices, invoices, saveInvoiceBackend} = invoiceContext;
   const componentPrint = useRef('');
-
+  
   useEffect(() => {
     getItems();
     getInvoices();
-  }, []);
-
-
-  // const totalPriceFunc = (total,id,itemPrice,itemToPurchase) => {
-  //   setTotalPrice(totalPrice + total);
-  //   // console.log(totalBuying);
-  //   console.log(id + ' ' +itemPrice + ' ' + itemToPurchase);
-  //   // totalBuyingItems([...totalBuyingItems,id:])
-  //   totalBuyingItems(...totalBuyingItems,{[totalBuyingItems]:{_id:id,itemName:items[id].itemName,itemPrice,itemToPurchase}})
-  // }
+  }, [getItems, getInvoices]);
 
   const getTotalItems = async (e) => {
     const totalItemsToBuy = await backendFunc();
@@ -36,13 +28,11 @@ export default function BillingMain() {
     }
   }
 
-
   function changeTabs(e) {
     const target = e.target;
     const parent = target.parentNode;
     const grandparent = parent.parentNode;
-    // console.log(grandparent);
-    // Remove all current selected tabs
+    
     parent
       .querySelectorAll('[aria-selected="true"]').forEach(element => {
         element.setAttribute('aria-selected', false);
@@ -50,15 +40,12 @@ export default function BillingMain() {
         element.style.borderBottom = 'none';
       });
 
-    // Set this tab as selected
     target.setAttribute('aria-selected', true);
 
-    // Hide all tab panels
     grandparent.parentNode
       .querySelectorAll('[role="tabpanel"]')
       .forEach(p => p.setAttribute('hidden', true));
 
-    // Show the selected panel
     grandparent.parentNode
       .querySelector(`#${target.getAttribute('aria-controls')}`)
       .removeAttribute('hidden');
@@ -68,7 +55,6 @@ export default function BillingMain() {
       target.style.borderBottom = '2px solid #4f45d3';
     }
   }
-
 
   return (
     <div className='main'>
@@ -107,7 +93,6 @@ export default function BillingMain() {
           </div>
           <div className="totalPriceDiv">
             <div className="totalPricec"><h6>Total Price : </h6><p>{totalPrice}</p></div>
-            {/* This is for printing bill */}
             <ReactToPrint
               trigger={() => {
                 return <button className='btn btn-primary p-1 my-2 mx-3'>Make Bill &#8594;</button>
@@ -117,7 +102,6 @@ export default function BillingMain() {
               pageStyle="print"
               onAfterPrint={getTotalItems}
             />
-
           </div>
           <div className="Bill">
             <div ref={componentPrint}>
@@ -142,8 +126,8 @@ export default function BillingMain() {
             </div>
           </div>
         </div>
+      </div>
 
-      </div >
       <div className="contentAllInvoice" id="panel-2" role="tabpanel" tabIndex="0" aria-labelledby="tab-2" hidden>
         <div className="invoiceList">
           {invoices.length !== 0 && invoices !== undefined ? invoices.map((invoice) => {
@@ -153,8 +137,8 @@ export default function BillingMain() {
       </div>
 
       <div className="contentAllInvoice" id="panel-3" role="tabpanel" tabIndex="0" aria-labelledby="tab-3" hidden>
-        
+        <AddItem />
       </div>
-    </div >
+    </div>
   )
 }

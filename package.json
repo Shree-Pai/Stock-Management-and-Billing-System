@@ -43,6 +43,6 @@
   "devDependencies": {
     "cors": "^2.8.5",
     "joi": "^17.6.0",
-    "mongoose": "^6.4.0"
+    "mongoose": "^6.13.6"
   }
 }
